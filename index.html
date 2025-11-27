@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmKu - Nonton Film Online Gratis Subtitle Indonesia</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Nonton film online gratis subtitle Indonesia. Streaming film terbaru 2024 dengan kualitas HD. Download film action, horror, comedy, romance gratis.">
+    <meta name="keywords" content="nonton film, streaming film, download film, film gratis, film subtitle indonesia, film HD, film terbaru 2024">
+    <meta name="author" content="FilmKu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FilmKu - Nonton Film Online Gratis Subtitle Indonesia">
+    <meta property="og:description" content="Streaming dan download film terbaru 2024 gratis dengan subtitle Indonesia. Kualitas HD, update setiap hari!">
+    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FilmKu">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FilmKu - Nonton Film Online Gratis">
+    <meta name="twitter:description" content="Streaming film terbaru 2024 gratis!">
+    <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FilmKu",
+        "url": "https://yourwebsite.com",
+        "description": "Platform streaming film online gratis dengan subtitle Indonesia",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yourwebsite.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- IKLAN ADSTERRA - Ganti dengan kode kamu -->
+    <!-- <script src="//pl12345678.profitablegatecpm.com/....js"></script> -->
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">↑</button>
+
+    <!-- IKLAN BANNER ATAS -->
+    <div class="ads-container top-ads">
+        <div class="ads-placeholder">
+            <!-- PASTE KODE IKLAN ADSTERRA BANNER DI SINI -->
+            <p>📢 Space Iklan Banner</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🎬 FilmKu</h1>
+            </div>
+            <nav>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#film-list" class="nav-link">Film</a>
+                <a href="#tentang" class="nav-link">Tentang</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#film-list" class="nav-link">Film</a>
+        <a href="#tentang" class="nav-link">Tentang</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Nonton Film Favorit Kamu</h2>
+            <p class="hero-subtitle">Koleksi film terbaik dengan kualitas HD</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari judul film..." autocomplete="off">
+                <button id="searchBtn" aria-label="Search">🔍 Cari</button>
+            </div>
+            <div id="searchSuggestions" class="search-suggestions"></div>
+        </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <section class="kategori">
+        <div class="container">
+            <div class="kategori-wrapper">
+                <button class="kat-btn active" data-genre="semua">Semua</button>
+                <button class="kat-btn" data-genre="action">Action</button>
+                <button class="kat-btn" data-genre="horror">Horror</button>
+                <button class="kat-btn" data-genre="comedy">Comedy</button>
+                <button class="kat-btn" data-genre="romance">Romance</button>
+                <button class="kat-btn" data-genre="animation">Animation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SORTING -->
+    <section class="sorting">
+        <div class="container">
+            <select id="sortSelect" class="sort-select">
+                <option value="terbaru">Terbaru</option>
+                <option value="rating">Rating Tertinggi</option>
+                <option value="judul">Judul A-Z</option>
+                <option value="tahun">Tahun Rilis</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- DAFTAR FILM -->
+    <section id="film-list" class="film-section">
+        <div class="container">
+            <h2 class="section-title">🎬 Film Terbaru</h2>
+            <div class="film-grid" id="filmGrid">
+                <!-- Film akan dimuat oleh JavaScript -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="load-more-container" id="loadMoreContainer">
+                <button id="loadMoreBtn" class="load-more-btn">Muat Lebih Banyak</button>
+            </div>
+            
+            <!-- Loading Indicator for Infinite Scroll -->
+            <div id="infiniteLoader" class="infinite-loader" style="display: none;">
+                <div class="spinner"></div>
+                <p>Memuat film...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IKLAN NATIVE -->
+    <div class="ads-container">
+        <div class="ads-placeholder">
+            <!-- PASTE KODE IKLAN ADSTERRA NATIVE DI SINI -->
+            <p>📢 Space Iklan Native</p>
+        </div>
+    </div>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="tentang">
+        <div class="container">
+            <h2>Tentang FilmKu</h2>
+            <p>FilmKu adalah platform streaming film online gratis dengan subtitle Indonesia. Nikmati berbagai koleksi film dari berbagai genre.</p>
+            
+            <!-- Legal Disclaimer -->
+            <div class="disclaimer-box">
+                <h3>⚖️ Legal Disclaimer</h3>
+                <ul>
+                    <li>Website ini tidak menyimpan file film apapun di server</li>
+                    <li>Semua film adalah embedan dari sumber pihak ketiga</li>
+                    <li>Kami hanya menyediakan informasi yang tersedia di internet</li>
+                    <li>Hak cipta sepenuhnya dimiliki oleh pemegang hak masing-masing</li>
+                    <li>Gunakan website ini dengan bijak dan tanggung jawab pribadi</li>
+                </ul>
+            </div>
+            
+            <div class="share-section">
+                <h3>📱 Bagikan ke Teman!</h3>
+                <div class="share-buttons">
+                    <button class="share-btn facebook" data-platform="facebook">Facebook</button>
+                    <button class="share-btn twitter" data-platform="twitter">Twitter</button>
+                    <button class="share-btn whatsapp" data-platform="whatsapp">WhatsApp</button>
+                    <button class="share-btn telegram" data-platform="telegram">Telegram</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FilmKu. All rights reserved.</p>
+            <p class="disclaimer-footer">⚠️ Website ini hanya untuk tujuan edukasi dan hiburan.</p>
+        </div>
+    </footer>
+
+    <!-- IKLAN POPUP/POPUNDER -->
+    <!-- <script src="//pl12345678.profitablegatecpm.com/popunder.js"></script> -->
+
+    <script src="script.js"></script>
+</body>
+</html>

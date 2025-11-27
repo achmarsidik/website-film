@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonton Film - FilmKu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Tambahan CSS untuk halaman film */
+        .film-detail {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #e94560;
+            color: white;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .player-container {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            aspect-ratio: 16/9;
+        }
+        
+        .player-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .player-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+        }
+        
+        .player-placeholder .play-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .film-info-detail {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .film-info-detail h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .film-meta-detail {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .film-meta-detail span {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .sinopsis {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .download-section {
+            background: rgba(233, 69, 96, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .download-section h3 {
+            margin-bottom: 20px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            padding: 12px 30px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .download-btn.hd { background: #2196F3; }
+        .download-btn.fhd { background: #9C27B0; }
+        
+        .server-list {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .server-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #e94560;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .server-btn:hover, .server-btn.active {
+            background: #e94560;
+        }
+    </style>
+</head>
+<body>
+    <!-- IKLAN ATAS -->
+    <div class="ads-container top-ads">
+        <div class="ads-placeholder">
+            <p>📢 Space Iklan Adsterra Banner</p>
+        </div>
+    </div>
+
+    <!-- HEADER SIMPLE -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>🎬 FilmKu</h1></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- KONTEN FILM -->
+    <div class="film-detail">
+        <a href="index.html" class="back-btn">← Kembali</a>
+        
+        <!-- IKLAN SEBELUM PLAYER -->
+        <div class="ads-container">
+            <div class="ads-placeholder">
+                <p>📢 Space Iklan Adsterra (Sebelum Player)</p>
+            </div>
+        </div>
+        
+        <!-- PILIHAN SERVER -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="margin-bottom: 15px;">Pilih Server:</h3>
+            <div class="server-list">
+                <button class="server-btn active" onclick="gantiServer(1)">Server 1</button>
+                <button class="server-btn" onclick="gantiServer(2)">Server 2</button>
+                <button class="server-btn" onclick="gantiServer(3)">Server 3</button>
+            </div>
+        </div>
+        
+        <!-- VIDEO PLAYER -->
+        <div class="player-container" id="playerContainer">
+            <div class="player-placeholder">
+                <div class="play-icon">▶️</div>
+                <p>Klik untuk memutar video</p>
+                <p style="font-size: 12px; color: #888; margin-top: 10px;">
+                    Embed video YouTube/Dailymotion/dll di sini
+                </p>
+            </div>
+        </div>
+        
+        <!-- IKLAN SETELAH PLAYER -->
+        <div class="ads-container">
+            <div class="ads-placeholder">
+                <p>📢 Space Iklan Adsterra (Setelah Player)</p>
+            </div>
+        </div>
+        
+        <!-- INFO FILM -->
+        <div class="film-info-detail" id="filmInfo">
+            <h1 id="filmTitle">Judul Film</h1>
+            <div class="film-meta-detail">
+                <span id="filmYear">📅 Tahun</span>
+                <span id="filmGenre">🎭 Genre</span>
+                <span id="filmDuration">⏱️ Durasi</span>
+                <span id="filmRating">⭐ Rating</span>
+                <span id="filmQuality">📺 Kualitas</span>
+            </div>
+            <div class="sinopsis">
+                <h3>Sinopsis:</h3>
+                <p id="filmSinopsis">Deskripsi film...</p>
+            </div>
+        </div>
+        
+        <!-- TOMBOL DOWNLOAD -->
+        <div class="download-section">
+            <h3>📥 Download Film</h3>
+            <p style="color: #ccc; margin-bottom: 15px;">Pilih kualitas download:</p>
+            <div class="download-buttons">
+                <a href="#" class="download-btn" onclick="handleDownload('360p')">360p</a>
+                <a href="#" class="download-btn hd" onclick="handleDownload('720p')">720p HD</a>
+                <a href="#" class="download-btn fhd" onclick="handleDownload('1080p')">1080p FHD</a>
+            </div>
+        </div>
+        
+        <!-- IKLAN BAWAH -->
+        <div class="ads-container">
+            <div class="ads-placeholder">
+                <p>📢 Space Iklan Adsterra (Bawah)</p>
+            </div>
+        </div>
+        
+        <!-- SHARE -->
+        <div class="share-section" style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; text-align: center;">
+            <h3>📱 Bagikan Film Ini!</h3>
+            <div class="share-buttons" style="margin-top: 15px;">
+                <a href="#" class="share-btn facebook" onclick="shareFilm('facebook')">Facebook</a>
+                <a href="#" class="share-btn twitter" onclick="shareFilm('twitter')">Twitter</a>
+                <a href="#" class="share-btn whatsapp" onclick="shareFilm('whatsapp')">WhatsApp</a>
+                <a href="#" class="share-btn telegram" onclick="shareFilm('telegram')">Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FilmKu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load detail film
+        document.addEventListener('DOMContentLoaded', () => {
+            const film = getFilmDetail();
+            
+            if (film) {
+                document.getElementById('filmTitle').textContent = film.judul;
+                document.getElementById('filmYear').textContent = '📅 ' + film.tahun;
+                document.getElementById('filmGenre').textContent = '🎭 ' + film.genre;
+                document.getElementById('filmDuration').textContent = '⏱️ ' + film.durasi;
+                document.getElementById('filmRating').textContent = '⭐ ' + film.rating;
+                document.getElementById('filmQuality').textContent = '📺 ' + film.kualitas;
+                document.getElementById('filmSinopsis').textContent = film.sinopsis;
+                document.title = film.judul + ' - FilmKu';
+            }
+        });
+        
+        // Ganti server
+        function gantiServer(server) {
+            document.querySelectorAll('.server-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Di sini bisa ganti iframe src sesuai server
+            alert('Server ' + server + ' dipilih!');
+        }
+        
+        // Handle download (bisa redirect ke halaman iklan dulu)
+        function handleDownload(quality) {
+            event.preventDefault();
+            alert('Download ' + quality + ' dimulai!\n\nTips: Bisa redirect ke link Adsterra dulu sebelum download.');
+            // window.open('LINK_DOWNLOAD', '_blank');
+        }
+        
+        // Share film
+        function shareFilm(platform) {
+            const url = window.location.href;
+            const text = 'Nonton ' + document.getElementById('filmTitle').textContent + ' di FilmKu!';
+            
+            let shareUrl = '';
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
+                    break;
+                case 'whatsapp':
+                    shareUrl = 'https://api.whatsapp.com/send?text=' + text + ' ' + url;
+                    break;
+                case 'telegram':
+                    shareUrl = 'https://t.me/share/url?url=' + url + '&text=' + text;
+                    break;
+            }
+            
+            window.open(shareUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
